@@ -1,0 +1,122 @@
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+ 
+data=pd.DataFrame({
+"Age":[10,25,60,80],
+"Blood Pressure":[80,120,180,200]
+})
+scaler=StandardScaler()
+scaled_data=scaler.fit_transform(data)
+scaled_df=pd.DataFrame(scaled_data,columns=data.columns)
+print("Original Data")
+print(data)
+print("\nStandard Scaled Data")
+print(scaled_df)
+ 
+from sklearn.preprocessing import MinMaxScaler
+import pandas as pd
+ 
+data=pd.DataFrame({
+"Steps":[2000,5000,10000,15000],
+"Calories Burned":[150,300,450,700]
+})
+scaler=MinMaxScaler()
+scaled=scaler.fit_transform(data)
+scaled_df=pd.DataFrame(scaled,columns=data.columns)
+print("Original Data")
+print(data)
+print("\nMin-Max Scaled Data")
+print(scaled_df)
+ 
+from sklearn.preprocessing import MaxAbsScaler
+import pandas as pd
+ 
+data=pd.DataFrame({
+"Product Price":[100,500,2000,10000],
+"Ratings":[2,3,4,5]
+})
+scaler=MaxAbsScaler()
+scaled_data=scaler.fit_transform(data)
+scaled_df=pd.DataFrame(scaled,columns=data.columns)
+print("Original Data")
+print(data)
+print("\nMaxAbs Scaled Data")
+print(scaled_df)
+ 
+from sklearn.preprocessing import RobustScaler,StandardScaler
+import pandas as pd
+ 
+data=pd.DataFrame({
+"Amount":[1000,2000,3000,50000]
+})
+# RobustScaler
+robust=RobustScaler()
+robust_scaled=robust.fit_transform(data)
+# StandardScaler
+standard=StandardScaler()
+standard_scaled=standard.fit_transform(data)
+print("Original Data")
+print(data)
+print("\nRobustScaler")
+print(pd.DataFrame(robust_scaled,columns=["Amount"]))
+print("\nStandardScaler")
+print(pd.DataFrame(standard_scaled,columns=["Amount"]))
+ 
+ 
+import numpy as np
+vector=np.array([6,8])
+magnitude=np.linalg.norm(vector)
+unit_vector=vector/magnitude
+print("Original Vector:",vector)
+print("Magnitude:",magnitude)
+print("Unit Vector:",unit_vector)
+ 
+import pandas as pd
+import numpy as np
+data=pd.DataFrame({
+    "Views":[10,100,1000,10000],
+    "Shares":[1,10,100,1000]})
+log_data=np.log10(data)
+print("Original Data")
+print(data)
+print("\nLog Transformed Data")
+print(log_data)
+ 
+from sklearn.preprocessing import RobustScaler,StandardScaler
+import pandas as pd
+ 
+data=pd.DataFrame({
+"Temperature":[-120,-60,0,20],
+"Radiation":[5,50,300,1200]
+})
+# RobustScaler
+robust=RobustScaler()
+robust_scaled=robust.fit_transform(data)
+# StandardScaler
+standard=StandardScaler()
+standard_scaled=standard.fit_transform(data)
+print("Original Data")
+print(data)
+print("\nRobustScaler")
+print(pd.DataFrame(robust_scaled,columns=data.columns))
+print("\nStandardScaler")
+print(pd.DataFrame(standard_scaled,columns=data.columns))
+ 
+import numpy as np
+usage=np.array([1,4,9,16,100])
+print("Original Data")
+print(usage)
+sqrt_data=np.sqrt(usage)
+print("\nSquare Root Transfromation")
+print(sqrt_data)
+ 
+import numpy as np
+data=np.array([1000,2000,5000,10000])
+print("Original Data")
+print(data)
+max_value=np.max(np.abs(data))
+j=len(str(int(max_value)))
+scaled=data/(10**j)
+print("\nValue of j=",j)
+print("\nDecimal Scaled Data")
+print(scaled)
