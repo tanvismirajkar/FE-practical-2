@@ -1,0 +1,91 @@
+Question no1:Extract Day ,Month and Year
+import pandas as pd
+dates=[
+       '2026-01-15','2026-02-20','2026-03-15','2026-04-18','2026-05-25','2026-06-10',
+       '2026-07-22','2026-08-30','2026-09-12','2026-10-15'
+]
+ 
+df=pd.DataFrame({"Date":pd.to_datetime(dates)})
+df["Day"]=df["Date"].dt.day
+df["Month"]=df["Date"].dt.month
+df["Year"]=df["Date"].dt.year
+ 
+print(df)
+'''
+'''
+Question no2:Identify Weekday/Weekend
+import pandas as pd
+import numpy as np
+dates=[
+   '2026-05-16','2026-05-17','2026-05-12','2026-04-14','2026-04-8','2026-03-24',
+   '2026-2-12','2026-02-1','2026-01-14','2026-01-12'
+]
+df=pd.DataFrame({"Date":pd.to_datetime(dates)})
+df["Day"]=df["Date"].dt.day_name()
+df["Type"] =np.where(df["Date"].dt.weekday>=5,
+          "Weekend",
+          "Weekday")
+print(df)
+'''
+'''
+import pandas as pd
+dates=[
+       '2026-01-10','2026-02-14','2026-03-25','2026-04-15','2026-05-20',
+       '2026-06-15','2026-07-20','2026-08-09','2026-09-21','2026-10-28'
+]
+ 
+df=pd.DataFrame({"Date":pd.to_datetime(dates)})
+df["Quarter"]=df["Date"].dt.quarter
+print(df)
+'''
+'''
+Questionno4:Time Difference(Days)
+import pandas as pd
+start_dates=[
+             '2026-01-10','2026-02-14','2026-03-10','2026-04-15','2026-05-10',
+             '2026-06-12','2026-07-20','2026-08-09','2026-09-21','2026-10-28'
+]
+end_dates=[
+           ' 2026-01-25','2026-02-20','2026-03-25','2026-04-28','2026-05-25',
+           '2026-06-20','2026-07-25','2026-08-30','2026-09-28','2026-10-30'
+]
+df=pd.DataFrame({
+  "Start":pd.to_datetime(start_dates),
+  "End":pd.to_datetime(end_dates)
+})
+ 
+df["Difference(Days)"]=(df["End"]-df["Start"]).dt.days
+ 
+print(df)
+'''
+'''
+Question no5:Age from DOB
+import pandas as pd
+ 
+dob=[
+     '2000-05-10','1998-08-22','1995-12-01','1992-03-15','1990-07-30',
+     '1988-11-25','1985-06-18','1982-09-09','1980-01-01','1975-04-20'
+]
+today=pd.Timestamp.today()
+ 
+df=pd.DataFrame({"DOB":pd.to_datetime(dob)})
+ 
+df["Age"]=((today-df["DOB"]).dt.days/365.25).astype(int)
+print(df)
+'''
+Question no6:Session Duration
+import pandas as pd
+login = [
+'09:00:00','10:15:00','11:30:00','12:45:00','14:00:00',
+'15:20:00','16:40:00','18:00:00','19:15:00','20:30:00'
+]
+logout = [
+'10:30:00','11:45:00','13:00:00','14:15:00','15:30:00',
+'16:50:00','18:10:00','19:30:00','20:45:00','22:00:00'
+]
+df = pd.DataFrame({
+"Login": pd.to_datetime(login),
+"Logout": pd.to_datetime(logout)
+})
+df["Session Duration"] = df["Logout"] - df["Login"]
+print(df)
