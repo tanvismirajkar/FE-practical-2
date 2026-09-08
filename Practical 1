@@ -1,0 +1,47 @@
+
+data=np.array([5,7,8,6,9,10,50])
+Q1=np.percentile(data,25)
+Q3=np.percentile(data,75)
+IQR= Q3-Q1
+ 
+lower=Q1-1.5*IQR
+upper=Q3+1.5*IQR
+ 
+Outliers=data[(data<lower)|(data>upper)]
+ 
+print("Q1:",Q1)
+print("Q3:",Q3)
+print("QR:,QR")
+print("Lower Bound:",lower)
+print("Upper Bound:",upper)
+print("Outliers:",Outliers) 
+'''
+''' 
+ 
+import matplotlib.pyplot as plt
+ 
+data = [12,14,13,15,16,18,100]
+ 
+plt.boxplot(data)
+plt.title("Boxplot")
+plt.show()
+'''
+''' 
+ 
+x=[10,12,11,13,12,50]
+y=[20,22,21,23,22,100]
+ 
+plt.scatter(x,y)
+plt.title("Scatter Plot")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.show()
+'''
+'''
+
+data1=np.array([10,12,11,13,12])
+data2=np.array([10,12,11,13,12,100])
+print("dataset1:",data1)
+print("dataset1:",data1)
+print("mean for dataset1:",np.mean(data))
+print("mean for dataset2:",np.mean(data))
