@@ -1,0 +1,71 @@
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+df=pd.DataFrame({
+"Vehicle Type":["Car","Bike","Truck","Car","Bike"]
+})
+print("Original Data:")
+print(df)
+le=LabelEncoder()
+df["Encoded"]=le.fit_transform(df["Vehicle Type"])
+print("\nEncodedData:")
+print(df)
+''' 
+''' 
+import pandas as pd
+df=pd.DataFrame({
+"Course Category":["Science","Arts","Commerce","Science"]
+})
+print("Original Data:")
+print(df)
+encoded=pd.get_dummies(df,columns=["Course Category"])
+print("\nOne-Hot Encoded Data:")
+print(encoded)
+''' 
+''' 
+import pandas as pd
+df=pd.DataFrame({
+"Room Type":["Standard","Deluxe","Suite","Deluxe"]
+})
+print("Original Data:")
+print(df)
+order={"Standard":0,"Deluxe":1,"Suite":2}
+df["Encoded"]=df["Room Type"].map(order)
+print("\nOrdinal Encoded Data:")
+print(df)
+''' 
+''' 
+#pip install category_encoders
+import pandas as pd
+import category_encoders as ce
+df=pd.DataFrame({
+"Product Code":["A12","B34","C56","A12","D78"]
+})
+print("Original Data:")
+print(df)
+encoder=ce.BinaryEncoder(cols=["Product Code"])
+encoded=encoder.fit_transform(df)
+print("\nBinary Encoded Data:")
+print(encoded)
+''' 
+''' 
+import pandas as pd
+df=pd.DataFrame({
+"Book Genre":["Fiction","SciFi","Fiction","History","SciFi"]
+})
+print("Original Data:")
+print(df)
+frequency=df["Book Genre"].value_counts()
+df["Frequency"]=df["Book Genre"].map(frequency)
+print("\nFrequency Table:")
+print(frequency)
+'''
+''' 
+import pandas as pd
+df=pd.DataFrame({
+"Food Category":["Veg","Non-Veg","Vegan","Veg"]
+})
+print("Original Data:")
+print(df)
+encoded=pd.get_dummies(df,columns=["Food Category"])
+print("\nOne-Hot Encoded Data:")
+print(encoded)
